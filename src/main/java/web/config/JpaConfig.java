@@ -24,7 +24,8 @@ import java.util.Properties;
 @ComponentScan("web")
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@EnableJpaRepositories("web.dao")
+//@EnableJpaRepositories("web.dao")
+@EnableJpaRepositories("web.repository")
 public class JpaConfig {
 
     private final Environment env;

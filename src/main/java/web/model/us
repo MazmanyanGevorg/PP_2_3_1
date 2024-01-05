@@ -3,3 +3,18 @@
 ("Albert", "Rammshtein", 26, 45, 8505),
 ("Leonid", "Messourry", 33, 49, 5233),
 ("Vilen", "Metalin", 38, 20, 1289);
+
+INSERT INTO `schema.pp.2.3.1`.users (age, level, name, points, surname)
+VALUES (25, 51, 'Aleks', 3786, ' Tankin');
+
+INSERT INTO `schema.pp.2.3.1`.users (age, level, name, points, surname)
+VALUES (18, 75, 'Leon', 453, 'Hudoy');
+
+INSERT INTO `schema.pp.2.3.1`.users (age, level, name, points, surname)
+VALUES (26, 45, 'Albert', 434, ' Rammshtein');
+
+INSERT INTO `schema.pp.2.3.1`.users (age, level, name, points, surname)
+VALUES (33, 49, 'Leonid', 63, ' Messourry');
+
+INSERT INTO `schema.pp.2.3.1`.users (age, level, name, points, surname)
+VALUES (38, 20, 'Vilen', 453, 'Metalin');

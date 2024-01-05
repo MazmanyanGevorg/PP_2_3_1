@@ -4,7 +4,12 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HandlesTypes;
+import javax.servlet.annotation.WebListener;
+import javax.servlet.annotation.WebServlet;
 
+@WebListener
+@HandlesTypes(WebServlet.class)
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     // Метод, указывающий на класс конфигурации

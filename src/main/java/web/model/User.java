@@ -14,7 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -29,9 +29,9 @@ public class User {
     private int level;
 
     @Column(name = "points")
-    private long points;
+    private int points;
 
-    public User(long id, String name, String surname, int age, int level, long points) {
+    public User(int id, String name, String surname, int age, int level, int points) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -40,7 +40,7 @@ public class User {
         this.points = points;
     }
 
-    public User(String name, String surname, int age, int level, long points) {
+    public User(String name, String surname, int age, int level, int points) {
         this.name = name;
         this.surname = surname;
         this.age = age;
