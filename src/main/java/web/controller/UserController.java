@@ -1,6 +1,7 @@
 package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,71 +9,83 @@ import org.springframework.web.servlet.ModelAndView;
 import web.model.User;
 import web.service.UserService;
 
-import java.util.List;
-import java.util.Map;
-
 @Controller
+@RequestMapping("/users")
 public class UserController {
 
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @RequestMapping("/")
-    public ModelAndView home() {
-        List<User> listUser = userService.getAllUsers();
-        ModelAndView mav = new ModelAndView("list");
-        mav.addObject("listUser", listUser);
-        return mav;
+    public UserController() {
     }
 
     //Список всех users
-    @GetMapping(value = "/") // путь в браузере (Model model,@ModelAttribute("flashMessage") String flashAttribute)
+    @GetMapping() // путь в браузере (Model model,@ModelAttribute("flashMessage") String flashAttribute)
     public String viewUsers(Model model) {
-        model.addAttribute("usersAll", userService.getAllUsers()); // usersAll -> "${usersAll}" в users.html файле
-        return "list"; //название файла -> usersem.html
+        model.addAttribute("listUser", userService.getAllUsers()); // usersAll -> "${usersAll}" в users.html файле
+        return "/list"; //название файла -> list.html
     }
 
-    @RequestMapping("/new")
-    public String newUserForm(Map<String, Object> model) {
-        User user = new User();
-        model.put("user", user);
-        return "new_user";
+//    @GetMapping("/new")
+//    public String newUserForm(Map<String, Object> model) {
+//        User user = new User();
+//        model.put("user", user);
+//        return "new_user";
+//    }
+
+    @GetMapping("/")
+    public String showById(@RequestParam("userId") long userId, Model model) {
+        model.addAttribute("user", userService.getUserById(userId));
+        return "/edit_user";
     }
 
-    @PostMapping("/new")
-    public String addUser(@ModelAttribute("user") User user) {
+//    @GetMapping("/new")
+//    public String newUserForm(Model model) {
+//        model.addAttribute("user", new User());
+//        // "user" - это в new_user.html object="${user}" в <form>
+//        return "/new_user";
+//    }
+
+    //    это тоже самое делает что и метод сверху
+    @GetMapping("/new")
+    public String newUserForm(@ModelAttribute("user") User user) {
+        return "/new_user";
+    }
+
+    @PostMapping()
+    public String addUser(@ModelAttribute("user") User user) { // "user" - это объект из html формы <form>
         userService.addUser(user);
-        return "redirect:/";
+        return "redirect:/users";
     }
 
+// Тоже самое что и метод newUserForm
+//    @PostMapping(value = "/save")
+//    public String saveUser(@ModelAttribute("user") User user) {
+//        userService.updateUser(user);
+//        return "redirect:";
+//    }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute("user") User user) {
-        userService.updateUser(user);
-        return "redirect:/";
-    }
-
-    @RequestMapping("/edit")
+    @GetMapping("/edit")
     public ModelAndView editUserForm(@RequestParam long id) {
-        ModelAndView mav = new ModelAndView("edit_user");
+        ModelAndView mav = new ModelAndView("/edit_user");
         User user = userService.getUserById(id);
         mav.addObject("user", user);
         return mav;
     }
 
     @PostMapping("/edit")
-    public String editUser(@ModelAttribute("user") User user) {
-        userService.updateUser(user);
-        return "redirect:/";
+    public String editUser(@ModelAttribute("user") User updateUser, long userId) {
+        userService.updateUser(userId, updateUser);
+        return "redirect:";
     }
 
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
     public String deleteUserForm(@RequestParam long id) {
         userService.deleteUser(id);
-        return "redirect:/";
+        return "redirect:";
     }
 }

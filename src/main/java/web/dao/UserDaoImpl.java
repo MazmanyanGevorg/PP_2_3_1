@@ -7,52 +7,47 @@ import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.lang.reflect.ParameterizedType;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
 @Transactional(readOnly = true)
-public class UserDaoImpl implements UserDAO{
-
-    public User user;
+public class UserDaoImpl implements UserDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public UserDaoImpl() {
-        ParameterizedType genericSuperclass = (ParameterizedType) getClass()
-                .getGenericSuperclass();
-        this.user = (User) genericSuperclass
-                .getActualTypeArguments()[0];
-    }
-
-
     @Override
     public List<User> getAllUsers() {
-        return null;
+        return entityManager
+                .createQuery("SELECT u FROM User u", User.class)
+                .getResultList();
     }
 
     @Override
     @Transactional
     public void addUser(User user) {
-        this.entityManager.persist(user);
+        entityManager.persist(user);
     }
 
     @Override
     @Transactional
     public void deleteUser(@Param("id") long userId) {
-        userId = this.entityManager.merge(userId);
-        this.entityManager.remove(userId);
+        entityManager.remove(getUserById(userId));
     }
 
     @Override
     @Transactional
-    public void updateUser(User user) {
-        this.entityManager.persist(user);
+    public void updateUser(long userId, User updateUser) {
+        entityManager.merge(updateUser);
     }
 
     @Override
     public User getUserById(long userId) {
-        return this.entityManager.find(User.class, userId);
+        TypedQuery<User> a = entityManager.createQuery(
+                "select u from User u where u.id = :userId", User.class
+        );
+        a.setParameter("userId", userId);
+        return a.getResultList().stream().findAny().orElse(null);
     }
 }

@@ -3,49 +3,70 @@
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <title>List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Edit User</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossorigin="anonymous">
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous">
-
-</script>
-
 <div align="center">
-    <h2>Список пользователей</h2>
-    <br>
-    <br>
-    <h3><button th:href="@{/new}">Новый Пользователь</button></h3>
-    <table border="1" cellpadding="5">
-        <br>
-        <br>
-        <tr>
-            <th scope="col" style="background-color: red" >id</th>
-            <th scope="col" style="background-color: yellow">Имя</th>
-            <th scope="col" style="background-color: yellow">Фамилия</th>
-            <th scope="col" style="background-color: yellow">Возраст</th>
-            <th scope="col" style="background-color: yellow">Уровень</th>
-            <th scope="col" style="background-color: yellow">Очки</th>
-            <th style="background-color: red">Действия</th>
-        </tr>
-        <tr th:each="user:${listUser}">
-            <td th:text="${user.getId()}"/>
-            <td th:text="${user.getName()}"/>
-            <td th:text="${user.getSurname()}"/>
-            <td th:text="${user.getAge()}"/>
-            <td th:text="${user.getLevel()}"/>
-            <td th:text="${user.getPoints()}"/>
-            <td>
-                <button th:href="@{/edit(id=${user.id})}">Edit</button>
-                <button th:href="@{/delete(id=${user.id})}">Delete</button>
-            </td>
-        </tr>
-    </table>
+    <h2>Edit User</h2>
+    <form action="/list" method="post" th:object="${user}">
+        <table border="0" cellpadding="5">
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{name}"/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Seuname:</td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{surname}"/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{age}"/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Level:</td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{level}"/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Points:</td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{points}"/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <!--                <td colspan="2"><input type="submit" value="Save"></td>-->
+                <td>
+                    <input type="button" value="Save"
+                           onclick="window.location.href = 'list'"/>
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
 </body>
 </html>
