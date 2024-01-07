@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.annotation.WebServlet;
 
 @WebListener
-@HandlesTypes(WebServlet.class)
+@HandlesTypes(WebConfig.class)
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     // Метод, указывающий на класс конфигурации

@@ -47,4 +47,5 @@ public class User {
         this.level = level;
         this.points = points;
     }
+
 }

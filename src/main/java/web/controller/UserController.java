@@ -32,8 +32,7 @@
 //
 ////    @GetMapping("/new")
 ////    public String newUserForm(Map<String, Object> model) {
-////        User user = new User();
-////        model.put("user", user);
+////        model.put("user", new User());
 ////        return "new_user";
 ////    }
 //
@@ -80,12 +79,12 @@
 //    @PostMapping("/edit")
 //    public String editUser(@ModelAttribute("user") User updateUser, int userId) {
 //        userService.updateUser(userId, updateUser);
-//        return "redirect:";
+//        return "redirect:/";
 //    }
 //
 //    @PostMapping("/delete")
 //    public String deleteUserForm(@RequestParam int id) {
 //        userService.deleteUser(id);
-//        return "redirect:";
+//        return "redirect:/";
 //    }
 //}
