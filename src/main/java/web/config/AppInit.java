@@ -8,8 +8,6 @@ import javax.servlet.annotation.HandlesTypes;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.annotation.WebServlet;
 
-@WebListener
-@HandlesTypes(WebConfig.class)
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     // Метод, указывающий на класс конфигурации
@@ -30,10 +28,5 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
-    }
-
-    @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        super.onStartup(servletContext);
     }
 }

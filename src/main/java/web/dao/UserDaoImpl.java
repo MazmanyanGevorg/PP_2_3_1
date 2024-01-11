@@ -1,6 +1,7 @@
 package web.dao;
 
-import org.springframework.data.repository.query.Param;
+//import org.springframework.data.repository.query.Param;
+
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,10 +11,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Objects;
 
 //@Repository
 @Component
-@Transactional(readOnly = true)
 public class UserDaoImpl implements UserDAO {
 
     @PersistenceContext
@@ -22,34 +23,48 @@ public class UserDaoImpl implements UserDAO {
     @Override
     public List<User> getAllUsers() {
         return entityManager
-                .createQuery("SELECT u FROM User u", User.class)
+                .createQuery("SELECT u FROM users u", User.class)
                 .getResultList();
     }
 
     @Override
-    @Transactional
     public void addUser(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    @Transactional
-    public void deleteUser(@Param("id") long userId) {
-        entityManager.remove(getUserById(userId));
+    public void updateUser(User user) {
+        User userEdit = entityManager.find(User.class, user.getId());
+        if (userEdit != null) {
+            userEdit.setName(user.getName());
+            userEdit.setSurname(user.getSurname());
+            userEdit.setAge(user.getAge());
+            userEdit.setLevel(user.getLevel());
+            userEdit.setPoints(user.getPoints());
+        }
+        entityManager.merge(userEdit);
+//        if (userEdit != null) {
+//            userEdit.setName("Gev");
+//            userEdit.setSurname("Mazmanyan");
+//            userEdit.setAge(40);
+//            userEdit.setLevel(100);
+//            userEdit.setPoints(10000);
+//        }
     }
 
     @Override
-    @Transactional
-    public void updateUser(long userId, User updateUser) {
-        entityManager.merge(updateUser);
+    public void deleteUser(Long id) {
+        User user = entityManager.find(User.class, id);
+        if (user != null) {
+            entityManager.remove(user);
+        }
     }
 
     @Override
-    public User getUserById(long userId) {
-        TypedQuery<User> a = entityManager.createQuery(
-                "select u from User u where u.id = :userId", User.class
-        );
-        a.setParameter("userId", userId);
-        return a.getResultList().stream().findAny().orElse(null);
+    public User getUserById(Long userId) {
+        return getAllUsers()
+                .stream().filter(user -> Objects.equals(user.getId(), userId))
+                .findAny()
+                .orElse(null);
     }
 }

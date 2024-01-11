@@ -15,7 +15,7 @@
 <body>
 <div align="center">
     <h2>New User</h2>
-    <form th:action="@{/}" th:method="post" th:object="${user}">
+    <form th:action="@{/new}" th:method="post" th:object="${user}">
         <table border="0" cellpadding="5">
             <tr>
                 <td>Name:</td>
@@ -59,7 +59,7 @@
             </tr>
             <tr>
                 <td>
-                    <input type="button" value="Save"
+                    <input type="submit" value="Save"
                            onclick="window.location.href = '/'"/>
                 </td>
             </tr>
@@ -67,14 +67,6 @@
     </form>
     <br>
     <br>
-    <!--    <input type="button" value="Add"-->
-    <!--           onclick="window.location.href = 'list.html'"/>-->
 </div>
 </body>
 </html>
-<!--<select id="role" required th:field="*{role}">-->
-<!--    <option value="" hidden>Select a role</option>-->
-<!--    <option value="GUEST" hidden>GUEST</option>-->
-<!--    <option value="USER" hidden>USER</option>-->
-<!--    <option value="ADMIN" hidden>ADMIN</option>-->
-<!--</select>-->
