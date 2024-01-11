@@ -9,22 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52352249-9121-42d1-bb94-65986456ea91" name="Changes" comment="готовое">
+    <list default="true" id="52352249-9121-42d1-bb94-65986456ea91" name="Changes" comment="исправлен">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/config/AppInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/config/AppInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/config/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/config/JpaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/controller/UserControllerRep.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/dao/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/dao/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/model/us" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/us" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/repository/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/service/UserServiceRep.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/edit_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/edit_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +203,7 @@
       <workItem from="1704457555574" duration="70812000" />
       <workItem from="1704647285735" duration="32633000" />
       <workItem from="1704744149198" duration="54636000" />
-      <workItem from="1704925292005" duration="17179000" />
+      <workItem from="1704925292005" duration="20504000" />
     </task>
     <task id="LOCAL-00001" summary="не показывает в таблице данные о пользователях">
       <option name="closed" value="true" />
@@ -251,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704988915273</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="исправлен">
+      <option name="closed" value="true" />
+      <created>1705004774095</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1705004774095</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +267,7 @@
     <MESSAGE value="не показывает в таблице данные о пользователях через геттеры" />
     <MESSAGE value="проблема с edit. Не редактирует, а стирает все данные пользователя." />
     <MESSAGE value="готовое" />
-    <option name="LAST_COMMIT_MESSAGE" value="готовое" />
+    <MESSAGE value="исправлен" />
+    <option name="LAST_COMMIT_MESSAGE" value="исправлен" />
   </component>
 </project>
