@@ -17,8 +17,8 @@
 <div align="center">
     <h3>Edit User</h3>
 
-    <form th:action="@{/edit}" th:method="post"  th:object="${user}">
-        <input type="hidden" th:name="id" th:value="${user.getId()}" />
+    <form th:action="@{/edit}" th:method="post" th:object="${user}">
+        <input type="hidden" th:name="id" th:value="${user.getId()}"/>
 
         <table border="0" cellpadding="5">
             <tr>

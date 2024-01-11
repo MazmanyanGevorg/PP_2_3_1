@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-//import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-//import org.springframework.data.repository.core.support.PersistenceExceptionTranslationRepositoryProxyPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -16,7 +14,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 import java.util.Objects;
@@ -26,8 +23,7 @@ import java.util.Properties;
 @ComponentScan("web")
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-//@EnableJpaRepositories("web.dao")
-//@EnableJpaRepositories("web.repository")
+
 public class JpaConfig {
 
     private final Environment env;
@@ -78,9 +74,4 @@ public class JpaConfig {
     public PersistenceExceptionTranslationPostProcessor exceptionTranslationPostProcessor() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
-
-//    @Bean
-//    public PersistenceExceptionTranslationRepositoryProxyPostProcessor exceptionTranslationRepositoryProxyPostProcessor() {
-//        return new PersistenceExceptionTranslationRepositoryProxyPostProcessor();
-//    }
 }

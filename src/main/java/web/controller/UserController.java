@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public String usersList(Model model) {
+    public String getUsersListForm(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "/list";
     }
@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @PostMapping("/new")
-    public String newUser(@ModelAttribute User user) {
+    public String creatNewUser(@ModelAttribute User user) {
         userService.addUser(user);
         return "redirect:/";
     }
@@ -54,7 +54,7 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute("user") User user) {
+    public String editUser(@ModelAttribute("user") User user) {
         userService.updateUser(user);
         return "redirect:/";
     }
@@ -62,7 +62,7 @@ public class UserController {
 /////////////////////////////////delete///////////////////////////////////////////////
 
     @PostMapping("/")
-    public String delete(@RequestParam("id") Long id) {
+    public String deleteUser(@RequestParam("id") Long id) {
         userService.deleteUser(id);
         return "redirect:/";
     }
